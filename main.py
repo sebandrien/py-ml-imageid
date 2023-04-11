@@ -2,8 +2,8 @@ import numpy as np
 import cv2
 
 image_path = "roompeople.jpg" #Define "image_path"
-prototxt_path = 
-model_path = 
+prototxt_path = MobileNetSSD_deploy.prototxt
+model_path = MobileNetSSD_deploy.caffemodel
 
 min_confidence = 0.25 #Using a minimum confidence value of 0.25
 
@@ -36,10 +36,7 @@ for i in range(detected_objects[2])
    prediction_text = f"{classes[class_index]}: {confidence:.2f}%"
    cv2.rectangle(image, (upper_left_x, upper_left_y), (lower_right_x, lower_right_y))
    cv2.putText(image, prediction_text, upper_left_x, upper_left_y - 15 if upper_left_y > 30 else upper_left_y + 15, cv2.FONT_HERSHEY_SIMPLEX, 0.6, colors{class_index],2)
-   
-                                         
-                                         
-
+                                           
 print(detected_objects[0][0][0][0])
 
 
