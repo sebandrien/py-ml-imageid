@@ -5,4 +5,4 @@ A Python application that detects images and a provides a confidence interval. T
 A minimum confidence interval of 0.25 is used.
 The seed "543210" is used to keep the classification colors consistent.
 
-The model used is - MobileNet-SSD
+The model used is - MobileNet-SSD.
