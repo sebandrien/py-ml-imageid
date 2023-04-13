@@ -9,3 +9,5 @@ The seed "543210" is used to keep the classification colors consistent.
 The model used is - MobileNet-SSD.
 
 In the bottom right of the image, the number of objects detected is displayed.
+
+The application draws a rectangle over detected objects, on the top left, a confidence interval is displayed.
