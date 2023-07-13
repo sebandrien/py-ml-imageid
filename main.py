@@ -1,11 +1,12 @@
-import numpy as np
 import cv2
+import numpy as np
+
 
 image_path = '999.jpg'
 prototxt_path = 'MobileNetSSD_deploy.prototxt'
 model_path = 'MobileNetSSD_deploy.caffemodel'
 
-min_confidence = 0.20
+minimum_confidence = 0.20
 
 classes = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "ddiningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 
@@ -16,6 +17,20 @@ net = cv2.dnn.readNetFromCaffe(prototxt_path, model_path)
 
 image = cv2.imread(image_path)
 height, width = image.shape[0], image.shape[1]
+
+# Padding the image to be a square image
+if width != height:
+    diff = abs(width - height)
+    if width > height:
+        pad_top = diff // 2
+        pad_bottom = diff - pad_top
+        image = cv2.copyMakeBorder(image, top=pad_top, bottom=pad_bottom, left=0, right=0, borderType=cv2.BORDER_CONSTANT, value=[0, 0, 0])
+    else:
+        pad_left = diff // 2
+        pad_right = diff - pad_left
+        image = cv2.copyMakeBorder(image, top=0, bottom=0, left=pad_left, right=pad_right, borderType=cv2.BORDER_CONSTANT, value=[0, 0, 0])
+
+# Then resize and normalize
 blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007, (300, 300), 130)
 
 net.setInput(blob)
@@ -24,7 +39,7 @@ detected_objects = net.forward()
 for i in range(detected_objects.shape[2]):
     confidence = detected_objects[0][0][i][2]
 
-    if confidence > min_confidence:
+    if confidence > minimum_confidence:
         class_index = int(detected_objects[0, 0, i, 1])
         if class_index < len(classes):
             upper_left_x = int(detected_objects[0, 0, i, 3] * width)
