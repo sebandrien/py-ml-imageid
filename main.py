@@ -5,7 +5,7 @@ image_path = '999.jpg'
 prototxt_path = 'MobileNetSSD_deploy.prototxt'
 model_path = 'MobileNetSSD_deploy.caffemodel'
 
-minimum_confidence = 0.20
+minimum_confidence = 0.20 # Define minimum confidence interval 
 
 classes = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "ddiningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 
