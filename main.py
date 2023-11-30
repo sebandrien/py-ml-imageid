@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 image_path = '999.jpg'
 prototxt_path = 'MobileNetSSD_deploy.prototxt'
 model_path = 'MobileNetSSD_deploy.caffemodel'
