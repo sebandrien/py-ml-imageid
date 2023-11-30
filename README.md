@@ -1,13 +1,7 @@
 # ml-imageid-py
 
-A Python application that detects, classfies, and provides a confidence interval (n) for a given image. The model used is a Caffe implementation of Google MobileNet SSD detection network, with pretrained weights on VOC0712 and mAP=0.727.
+This Python application utilizes a Caffe implementation of the Google MobileNet SSD detection network to detect and classify objects in a given image. The model is pretrained on VOC0712 with an mAP (mean Average Precision) of 0.727.
 
-A minimum confidence interval of 0.25 is used.
+A minimum confidence threshold of 0.25 is applied to filter the detected objects. To maintain consistent classification colors, the seed "543210" is employed.
 
-The seed "543210" is used to keep the classification colors consistent.
-
-The model used is - MobileNet-SSD.
-
-In the bottom right of the image, the number of objects detected is displayed.
-
-The application draws a rectangle over detected objects, on the top left, a confidence interval is displayed.
+The chosen model is MobileNet-SSD. Upon detection, the application draws rectangles around the identified objects. In the top left corner of each rectangle, a confidence interval is displayed. The total number of detected objects is showcased in the bottom right of the image.
